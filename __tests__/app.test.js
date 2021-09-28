@@ -8,6 +8,13 @@ describe('demo routes', () => {
     return setup(pool);
   });
 
+  it('post request for a board', async () => {
+    const res = await request(app)
+      .post('/api/v1/minesweeper')
+      .send(null);
+
+    expect(res.body.mines).toHaveLength(959);
+  });
   afterAll(() => {
     pool.end();
   });
